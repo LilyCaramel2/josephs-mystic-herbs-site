@@ -3,10 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build:css": "tailwindcss -i ./styles.css -o ./public/styles.css --minify && cp ./*.html ./public/",
-    "dev": "tailwindcss -i ./styles.css -o ./public/styles.css --watch"
-  },
-  "devDependencies": {
-    "tailwindcss": "^3.4.1"
+    "build": "node -e \"const fs=require('fs');fs.mkdirSync('public',{recursive:true});for(const f of fs.readdirSync('.')){if(f.endsWith('.html'))fs.copyFileSync(f,'public/'+f)}fs.copyFileSync('styles.css','public/styles.css')\"",
+    "build:css": "node -e \"const fs=require('fs');fs.mkdirSync('public',{recursive:true});for(const f of fs.readdirSync('.')){if(f.endsWith('.html'))fs.copyFileSync(f,'public/'+f)}fs.copyFileSync('styles.css','public/styles.css')\""
   }
 }
