@@ -1,8 +1,12 @@
 {
-  "name": "josephs-mystic-herbs-site",
-  "private": true,
+  "name": "josephs-mystic-herbs",
   "version": "1.0.0",
+  "private": true,
   "scripts": {
-    "build": "echo static-site"
+    "build:css": "tailwindcss -i ./styles.css -o ./public/styles.css --minify",
+    "dev": "tailwindcss -i ./styles.css -o ./public/styles.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
   }
 }
