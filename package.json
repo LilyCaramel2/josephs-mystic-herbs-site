@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build:css": "tailwindcss -i ./styles.css -o ./public/styles.css --minify",
+    "build:css": "tailwindcss -i ./styles.css -o ./public/styles.css --minify && cp ./*.html ./public/",
     "dev": "tailwindcss -i ./styles.css -o ./public/styles.css --watch"
   },
   "devDependencies": {
