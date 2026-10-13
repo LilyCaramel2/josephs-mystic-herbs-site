@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://lilycaramel2.github.io/josephs-mystic-herbs-site/public/sitemap.xml
