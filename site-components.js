@@ -21,12 +21,32 @@ class SiteHeader extends HTMLElement {
             <img class="brand-logo" src="joseph-logo-mark.png" alt="">
             <span>Joseph's Mystic Herbs</span>
           </a>
-          <nav class="site-nav" aria-label="Primary navigation">
+          <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation">
+            <span></span><span></span><span></span>
+          </button>
+          <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
             ${pageLinks.map(([href, label]) => `<a href="${href}"${active === href ? ' aria-current="page"' : ''}>${label}</a>`).join('')}
           </nav>
-          <a href="https://wa.me/27824624970?text=Hi%20Joseph" class="button button-primary">WhatsApp Joseph</a>
+          <a href="https://wa.me/27824624970?text=Hi%20Joseph" class="button button-primary header-whatsapp">WhatsApp Joseph</a>
         </div>
       </header>`;
+
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('#site-nav');
+    if (toggle && nav) {
+      const closeMenu = () => {
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation');
+        nav.classList.remove('is-open');
+      };
+      toggle.addEventListener('click', () => {
+        const open = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!open));
+        toggle.setAttribute('aria-label', open ? 'Open navigation' : 'Close navigation');
+        nav.classList.toggle('is-open', !open);
+      });
+      nav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+    }
   }
 }
 
